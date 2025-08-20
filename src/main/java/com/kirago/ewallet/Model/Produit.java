@@ -19,5 +19,9 @@ public class Produit {
     private String image;
 
     private Long prix;
+
+    @ManyToOne
+    @JoinColumn(name = "id_commercant", nullable = false)
+    private Commercant commercant;
     
 }
