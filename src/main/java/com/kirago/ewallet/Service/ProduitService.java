@@ -4,8 +4,8 @@ import com.kirago.ewallet.Model.Produit;
 import com.kirago.ewallet.Model.Compte;
 import com.kirago.ewallet.Repository.ProduitRepository;
 import com.kirago.ewallet.Repository.CompteRepository;
-import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;

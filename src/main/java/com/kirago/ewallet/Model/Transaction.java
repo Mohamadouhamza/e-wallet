@@ -2,8 +2,8 @@ package com.kirago.ewallet.Model;
 
 import jakarta.persistence.*;
 import lombok.*;
-
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 @Entity
 @Table(name = "transaction")
@@ -34,5 +34,24 @@ public class Transaction {
 
     @Lob
     private String qrCodeBase64;
+
+    public Transaction(Long montant, Compte compteSource, Compte compteCible) {
+        this.montant = montant;
+        this.compteSource = compteSource;
+        this.compteCible = compteCible;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Transaction)) return false;
+        Transaction that = (Transaction) o;
+        return Objects.equals(id, that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
 
 }

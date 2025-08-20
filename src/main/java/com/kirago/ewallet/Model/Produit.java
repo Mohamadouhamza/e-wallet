@@ -17,5 +17,7 @@ public class Produit {
     private String nom;
 
     private String image;
+
+    private Long prix;
     
 }
