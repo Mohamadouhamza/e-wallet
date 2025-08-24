@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 /**
  * Service de gestion des commerçants.
@@ -34,6 +35,7 @@ public class CommercantService {
     // Créer ou mettre à jour un commerçant
     @Transactional
     public Commercant save(Commercant commercant) {
+        commercant.setId("CMC#" + UUID.randomUUID().toString().substring(0, 7));
         return commercantRepository.save(commercant);
     }
 

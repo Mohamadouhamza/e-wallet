@@ -40,7 +40,7 @@ public class TransactionController {
 
     // POST - Transfert entre comptes
     @PostMapping("/transferer")
-    public Transaction transferer(@RequestParam String sourceId, @RequestParam String destinationId, @RequestParam Long montant) {
-        return transactionService.transferer(sourceId, destinationId, montant);
+    public Transaction transferer(@RequestParam String compteSource, @RequestParam String compteCible, @RequestParam Long montant) {
+        return transactionService.transferer(compteSource, compteCible, montant);
     }
 }

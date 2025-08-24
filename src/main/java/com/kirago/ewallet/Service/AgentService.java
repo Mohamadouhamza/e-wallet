@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 /**
  * Service pour la gestion des Agents.
@@ -35,6 +36,7 @@ public class AgentService {
     // Créer ou mettre à jour un agent
     @Transactional
     public Agent save(Agent agent) {
+        agent.setId("AGT#" + UUID.randomUUID().toString().substring(0, 7));
         return agentRepository.save(agent);
     }
 

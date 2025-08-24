@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 /**
  * Service pour la gestion des Produits.
@@ -38,6 +39,7 @@ public class ProduitService {
     // Créer ou mettre à jour un produit
     @Transactional
     public Produit save(Produit produit) {
+        produit.setId("PDT#" + UUID.randomUUID().toString().substring(0, 7));
         return produitRepository.save(produit);
     }
 

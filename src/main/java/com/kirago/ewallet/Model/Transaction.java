@@ -24,11 +24,11 @@ public class Transaction {
     @Column(name = "date_transaction")
     private LocalDateTime dateTransaction;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_compte_source", nullable = false)
     private Compte compteSource;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_compte_cible", nullable = false)
     private Compte compteCible;
 

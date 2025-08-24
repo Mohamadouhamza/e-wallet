@@ -52,13 +52,13 @@ public class CompteController {
     }
 
     // POST - Recharger un compte
-    @PostMapping("/{id}/recharger")
+    @PostMapping("/recharger")
     public Compte recharger(@PathVariable String id, @RequestParam Long montant) {
         return compteService.recharger(id, montant);
     }
 
     // POST - Débiter un compte
-    @PostMapping("/{id}/debiter")
+    @PostMapping("/debiter")
     public Compte debiter(@PathVariable String id, @RequestParam Long montant) {
         return compteService.debiter(id, montant);
     }

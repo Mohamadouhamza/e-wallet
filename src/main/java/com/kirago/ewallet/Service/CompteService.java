@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 /**
  * Service pour la gestion des Comptes.
@@ -34,6 +35,7 @@ public class CompteService {
     // Créer ou mettre à jour un compte
     @Transactional
     public Compte save(Compte compte) {
+        compte.setId("CPT#" + UUID.randomUUID().toString().substring(0, 7));
         return compteRepository.save(compte);
     }
 

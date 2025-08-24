@@ -17,6 +17,7 @@ import java.util.Base64;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 /*
  * Service de gestion des transactions.
@@ -53,14 +54,14 @@ public class TransactionService {
      * Créer une transaction simple entre deux comptes
      */
     @Transactional
-    public Transaction transferer(String idSource, String idDestination, Long montant) {
+    public Transaction transferer(String compteSource, String compteCible, Long montant) {
         if (montant <= 0) {
             throw new IllegalArgumentException("Le montant doit être positif");
         }
 
-        Compte source = compteRepository.findById(idSource)
+        Compte source = compteRepository.findById(compteSource)
                 .orElseThrow(() -> new RuntimeException("Compte source introuvable"));
-        Compte destination = compteRepository.findById(idDestination)
+        Compte destination = compteRepository.findById(compteCible)
                 .orElseThrow(() -> new RuntimeException("Compte destination introuvable"));
 
         if (source.getSolde() < montant) {
@@ -80,7 +81,7 @@ public class TransactionService {
         transaction.setDateTransaction(LocalDateTime.now());
         transaction.setCompteSource(source);
         transaction.setCompteCible(destination);
-
+        transaction.setId("UTL#" + UUID.randomUUID().toString().substring(0, 7));
         return transactionRepository.save(transaction);
     }
 

@@ -20,7 +20,7 @@ public class Produit {
 
     private Long prix;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_commercant", nullable = false)
     private Commercant commercant;
     
